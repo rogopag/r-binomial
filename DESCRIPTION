@@ -1,0 +1,10 @@
+Package: Binomial
+Type: Package
+Title: Pascal's Triangle
+Version: 0.1.0
+Author: Riccardo Strobbia
+Maintainer: Riccardo Strobbia <holdwine@gmail.com>
+Description: A collection of methods to calculate and plot Newton binomial in Pascal Triangle.
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
