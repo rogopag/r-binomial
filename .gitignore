@@ -6,3 +6,5 @@ Binomial.Rproj
 *.Rproj
 *.Rbuildignore
 *.Rprofile
+renv.lock
+.DS_Store
