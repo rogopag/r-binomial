@@ -8,3 +8,4 @@ Binomial.Rproj
 *.Rprofile
 renv.lock
 .DS_Store
+renv/
