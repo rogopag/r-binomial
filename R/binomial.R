@@ -100,14 +100,14 @@ binomial <- setRefClass(
       )
     },
     computePascal3DMatrix = function() {
-      a <- pascalBinomial()
-      a3 <- a %*% a
+      pascalBinomial() -> a
+      a %*% a -> a3
       return(a3)
     },
     computeCubeMatrixAndThreeSquaresCol = function() {
-      a3 <- computePascal3DMatrix()
-      one <- oneVectorMatrix()
-      a3d <- a3 %*% one
+      computePascal3DMatrix() -> a3
+      oneVectorMatrix() -> one
+      a3 %*% one -> a3d
       return(cbind(a3, a3d))
     }
   )
