@@ -5,3 +5,4 @@
 Binomial.Rproj
 *.Rproj
 *.Rbuildignore
+*.Rprofile
