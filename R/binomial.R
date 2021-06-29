@@ -87,7 +87,7 @@ binomial <- setRefClass(
       return(cbind(a, s))
     },
     plotPascalBinomial = function(matrix) {
-      pascal_binomial <- matrix
+      matrix -> pascal_binomial
       class(pascal_binomial)
       par(mar = c(5.1, 4.1, 4.1, 4.1)) # adapt margins
       plot(
