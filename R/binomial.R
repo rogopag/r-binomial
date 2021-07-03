@@ -5,9 +5,18 @@
 binomial <- setRefClass(
   'binomial',
   fields =
-    list(k = 'numeric'),
+    list(k = 'numeric', a2 = 'matrix'),
   methods =
     list(
+    initialize = function(k = 0) {
+      k ->> k
+      tryCatch({
+        pascalBinomial() ->> a2
+      }, error = function(e) {
+        print(e)
+        return(0)
+      })
+    },
     pascalBinomial = function() {
       if (k < 0) {
         stop(
@@ -67,7 +76,7 @@ binomial <- setRefClass(
       return(a)
     },
     pascalBinomialAndTwoSquaresCol = function() {
-      pascalBinomial() -> a
+      a2 -> a
       oneVectorMatrix() -> v
       a %*% v -> d
       return(cbind(a, d))
@@ -76,13 +85,7 @@ binomial <- setRefClass(
       return(apply(a, 1, sum))
     },
     addRowsSumAsIndependentCol = function() {
-      tryCatch({
-        pascalBinomial() -> a
-      }, error = function(e) {
-        print(e)
-        return(0)
-      })
-
+      a2 -> a
       computeRowsSum(a) -> s
       return(cbind(a, s))
     },
@@ -100,7 +103,7 @@ binomial <- setRefClass(
       )
     },
     computePascal3DMatrix = function() {
-      pascalBinomial() -> a
+      a2 -> a
       a %*% a -> a3
       return(a3)
     },
