@@ -1,6 +1,16 @@
 # binomial
-#install.packages(pkgs='plot.matrix')
-#library('plot.matrix')
+# install.packages(pkgs='plot.matrix')
+# library('plot.matrix')
+
+'Every instance of the class represents a single Triangle as a low triangular matrix.
+We didn\'t follow Blaise Pascal construction rules (Triangulus Arithmeticus, I-Definitiones in Blaise Pascal, Opere Complete, 2020 Giunti Milano),
+instead we followed the algorythm presented in Gilbert Strang, Introduction To Linear Algebra, 2.4 A p. 72, as Lij + Lij-1 = Li+1j, which derives
+direclty from Consect. 8 in Pascal treatise: "Summa cellularum basis (i) cujuslibet unitate minuta (i-1) aequatur summae cellularum basium onnium praecedentium
+Hoc enim est proprium progressionis duplae quae ab unitate incipit, ut quilibet ejus numerus, unitate minutus, aequatur omnium praecedentium.", in equation form
+(Lij) - 1 = sum(L[i], i==1, i-1).
+
+From the 2 preceding equations it is easy to derive the following: Lij = Li-1j + Li-1j-1 which is the usual simplified form we used in our main method pascalBinomial().
+'
 
 binomial <- setRefClass(
   'binomial',
@@ -18,6 +28,7 @@ binomial <- setRefClass(
       })
     },
     pascalBinomial = function() {
+      'Implements Lij = Li-1j + Li-1j-1 algorythm'
       if (k < 0) {
         stop(
           sprintf(
@@ -75,7 +86,7 @@ binomial <- setRefClass(
 
       return(a)
     },
-    pascalBinomialAndTwoSquaresCol = function() {
+    pascalBinomialAndSquaresCol = function() {
       a2 -> a
       oneVectorMatrix() -> v
       a %*% v -> d
@@ -84,23 +95,10 @@ binomial <- setRefClass(
     computeRowsSum = function(a) {
       return(apply(a, 1, sum))
     },
-    addRowsSumAsIndependentCol = function() {
+    addComputedSquaresColumn = function() {
       a2 -> a
       computeRowsSum(a) -> s
       return(cbind(a, s))
-    },
-    plotPascalBinomial = function(matrix) {
-      matrix -> pascal_binomial
-      class(pascal_binomial)
-      par(mar = c(5.1, 4.1, 4.1, 4.1)) # adapt margins
-      plot(
-        pascal_binomial,
-        breaks = c(1:sqrt(length(matrix))),
-        key = NULL,
-        fmt.cell = '%.0f',
-        axis.row = NULL,
-        axis.col = NULL
-      )
     },
     computePascal3DMatrix = function() {
       a2 -> a
@@ -112,6 +110,19 @@ binomial <- setRefClass(
       oneVectorMatrix() -> one
       a3 %*% one -> a3d
       return(cbind(a3, a3d))
+    },
+    plot = function(matrix) {
+      matrix -> pascal_binomial
+      class(pascal_binomial)
+      par(mar = c(5.1, 4.1, 4.1, 4.1)) # adapt margins
+      plot(
+        pascal_binomial,
+        breaks = c(1:sqrt(length(matrix))),
+        key = NULL,
+        fmt.cell = '%.0f',
+        axis.row = NULL,
+        axis.col = NULL
+      )
     }
   )
 )
