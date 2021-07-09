@@ -7,7 +7,7 @@ We didn't follow Blaise Pascal construction rules (*Triangulus Arithmeticus, I-D
 
       Lij + Lij-1 = Li+1j, 
 
-which derives direclty from Consect. 8 in Pascal treatise: *"Summa cellularum basis (i) cujuslibet unitate minuta (i-1) aequatur summae cellularum basium onnium praecedentiumHoc enim est proprium progressionis duplae quae ab unitate incipit, ut quilibet ejus numerus, unitate minutus, aequatur omnium praecedentium."*, in equation form:
+which derives direclty from Consect. 8 in Pascal treatise: *"Summa cellularum basis (i) cujuslibet unitate minuta (i-1) aequatur summae cellularum basium onnium praecedentium. Hoc enim est proprium progressionis duplae quae ab unitate incipit, ut quilibet ejus numerus, unitate minutus, aequatur omnium praecedentium."*, in equation form:
 
       (Lij) - 1 = sum(L[i], i==1, i-1).
 
