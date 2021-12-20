@@ -1,6 +1,6 @@
 # binomial
-# install.packages(pkgs='plot.matrix')
-# library('plot.matrix')
+#install.packages(pkgs='plot.matrix')
+#library('plot.matrix')
 
 'Every instance of the class represents a single Triangle as a low triangular matrix.
 We didn\'t follow Blaise Pascal construction rules (Triangulus Arithmeticus, I-Definitiones in Blaise Pascal, Opere Complete, 2020 Giunti Milano),
@@ -26,6 +26,9 @@ binomial <- setRefClass(
         print(e)
         return(0)
       })
+    },
+    getAsSimpleMatrix = function() {
+      return(a2)
     },
     pascalBinomial = function() {
       'Implements Lij = Li-1j + Li-1j-1 algorythm'
@@ -111,18 +114,12 @@ binomial <- setRefClass(
       a3 %*% one -> a3d
       return(cbind(a3, a3d))
     },
-    plot = function(matrix) {
-      matrix -> pascal_binomial
+    plotPascalBinomial = function(matrix) {
+      pascal_binomial <- matrix
       class(pascal_binomial)
-      par(mar = c(5.1, 4.1, 4.1, 4.1)) # adapt margins
-      plot(
-        pascal_binomial,
-        breaks = c(1:sqrt(length(matrix))),
-        key = NULL,
-        fmt.cell = '%.0f',
-        axis.row = NULL,
-        axis.col = NULL
-      )
+      par(mar=c(5.1, 4.1, 4.1, 4.1)) # adapt margins
+      plot(pascal_binomial, breaks=c(1:sqrt(length(matrix))), key=NULL, fmt.cell='%.0f', axis.row=NULL, axis.col=NULL)
     }
   )
 )
+
